@@ -1,0 +1,49 @@
+@import 'mixins';
+
+.tile-container {
+  @include flex(column);
+  position: relative;
+  box-shadow: $tile-shadow-lg;
+  height: 200px;
+  padding: $tile-padding;
+  border-radius: $border-radius;
+  // background: linear-gradient(to top, #56ccf2, #2f80ed);
+  background: $tile-bg;
+  background-size: $image-fit;
+  background-position: $image-pos;
+  color: #fff;
+  cursor: pointer;
+  img {
+    @include overlay(0.6);
+    object-fit: $image-fit;
+    object-position: $image-pos;
+    border-radius: $border-radius;
+    &:hover {
+      opacity: 0.9;
+      object-position: bottom;
+      transition: 0.3s all ease-in;
+    }
+  }
+  .weather-block {
+    position: absolute;
+    @include flex-align(column);
+    .temp {
+      font-size: $font-size-xl;
+      margin-top: 30px;
+    }
+  }
+  .location-block {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    @include flex-align(row, flex-start, baseline );
+    .city {
+      font-size: 1.5rem;
+      margin-right: 5px;
+    }
+    .country {
+      font-size: 0.9rem;
+      color: #eee;
+    }
+  }
+}

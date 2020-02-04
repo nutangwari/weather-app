@@ -1,0 +1,12 @@
+<bb-nav>Weather</bb-nav>
+<div class="dashboard-container">
+  <bb-city-tile
+    [cityMeta]="city"
+    *ngFor="let city of cities"
+    (click)="gotoDetail(city)">
+  </bb-city-tile>
+  <div class="add-tile" (click)="addCity()">
+    <i class="fas fa-plus-circle"></i>
+    <div class="label">Add City</div>
+  </div>
+</div>

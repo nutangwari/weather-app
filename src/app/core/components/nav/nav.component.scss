@@ -1,0 +1,10 @@
+@import "mixins";
+
+.nav-container {
+  background: #333;
+  color: #eee;
+  padding: $tile-padding;
+  font-size: $font-size-lg;
+  text-transform: uppercase;
+  letter-spacing: 13px;
+}

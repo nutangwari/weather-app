@@ -1,0 +1,135 @@
+@import "mixins";
+
+.city-detail-container {
+  @include flex();
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  color: #fff;
+  .image-block {
+    background: $tile-bg;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    .cover-image {
+      opacity: 0.7;
+      height: 100%;
+      width: 100%;
+      object-fit: $image-fit;
+      object-position: $image-pos;
+    }
+  }
+  .forecast-block {
+    @include flex-align(column, flex-start, flex-start);
+    position: absolute;
+    right: 1%;
+    cursor: pointer;
+    .tile {
+      @include flex-align(column);
+      width: 100%;
+      padding: $tile-padding;
+      margin: 10px 0;
+      white-space: nowrap;
+      border-radius: $border-radius;
+      box-shadow: $tile-shadow;
+      background: rgba($bg-color, 0.1);
+      border: 2px solid transparent;
+      transition: 0.1s border ease-in-out;
+      &:hover {
+        border: 2px solid $font-color;
+      }
+      .time {
+        font-size: $font-size-sm;
+        font-weight: bold;
+      }
+      .temp {
+        font-size: $font-size-xl;
+        margin: 10px 0;
+        text-align: center;
+      }
+      .desc {
+        text-align: center;
+      }
+    }
+  }
+  .info-block {
+    .back {
+      width: 100%;
+      font-size: $font-size-lg;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.3s linear;
+      &:hover {
+        transform: scaleX(1.1);
+      }
+    }
+    @include flex-align(column, space-between, center);
+    position: fixed;
+    height: 100%;
+    padding: 15px;
+    .location {
+      @include flex(column);
+      width: 100%;
+      text-align: left;
+      .city {
+        font-size: $font-size-lg;
+      }
+      .country {
+        font-size: $font-size-sm;
+        opacity: 0.8;
+      }
+      .change-location {
+        padding: $tile-padding 0;
+        font-size: $font-size-sm;
+        cursor: pointer;
+        .label {
+          margin: 0 10px;
+        }
+      }
+    }
+    .detail-weather {
+      width: 100%;
+      font-weight: bold;
+      .header {
+        font-size: $font-size-md;
+      }
+      .weather-item {
+        margin: 10px 0;
+        transition: 0.3s all ease-in;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      .fas {
+        margin-right: 10px;
+        width: 28px;
+      }
+    }
+    .actions {
+      @include flex-align(row, flex-start, flex-start);
+      width: 100%;
+
+      .action {
+        @extend %action-icon;
+        &:active {
+          background: $font-color;
+          color: $bg-color;
+        }
+        &:hover {
+          box-shadow: $tile-shadow;
+        }
+      }
+    }
+  }
+}
+
+%action-icon {
+  @include flex-align(row, center, center);
+  border: 2px solid #fff;
+  height: 20px;
+  width: 20px;
+  padding: 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}

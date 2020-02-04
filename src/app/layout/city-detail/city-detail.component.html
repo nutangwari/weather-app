@@ -1,0 +1,50 @@
+<div class="city-detail-container" *ngIf="cityInfo">
+  <div class="image-block">
+    <img [src]="cityInfo?.coverImage" alt="" class="cover-image">
+  </div>
+  <div class="forecast-block" *ngIf="forecast">
+    <div class="tile" (click)="showWeather(tile)" *ngFor="let tile of forecast.list">
+      <div class="time">{{tile.dt* 1000 | date: 'EEE, h a'}}</div>
+      <div class="temp">{{tile.main.temp | number: '.0-0'}}&deg;</div>
+      <div class="desc">{{tile.weather[0].description}}</div>
+    </div>
+  </div>
+  <div class="info-block">
+    <div class="back" routerLink="/">
+      <i class="fas fa-long-arrow-alt-left"></i>
+    </div>
+    <div class="location">
+      <div class="city">{{cityInfo.cityName}},
+        <span class="country">{{cityInfo.country}}</span>
+      </div>
+      <div class="change-location" routerLink="/">
+        <i class="fas fa-compass"></i>
+        <span class="label">Change Location</span>
+      </div>
+    </div>
+    <div class="detail-weather" *ngIf="currentMeta">
+      <div class="header">{{currentMeta.dt*1000 | date:'EEEE, h a'}}</div>
+      <div class="weather-item">
+        <i class="fas fa-wind"></i>
+        <span class="field">{{currentMeta.wind.speed}} m/s</span>
+      </div>
+
+      <div class="weather-item">
+        <i class="fas fa-long-arrow-alt-down"></i>
+        <span class="field">{{currentMeta.main.temp_min | number:'.0-0'}}&deg;C</span>
+      </div>
+      <div class="weather-item">
+        <i class="fas fa-long-arrow-alt-up"></i>
+        <span class="field">{{currentMeta.main.temp_max |number:'.0-0'}}&deg;C</span>
+      </div>
+      <div class="weather-item">
+        <i class="fas fa-tint-slash"></i>
+        <span class="field">{{currentMeta.main.humidity}}%</span>
+      </div>
+    </div>
+    <div class="actions">
+      <i class="action fas fa-chevron-up" (click)="scroll(-1)"></i>
+      <i class="action fas fa-chevron-down" (click)="scroll(1)"></i>
+    </div>
+  </div>
+</div>

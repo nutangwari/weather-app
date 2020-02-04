@@ -1,0 +1,49 @@
+@import 'mixins';
+
+:host {
+  flex-grow: 1;
+}
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0;
+  bb-city-tile {
+    @extend %dashboard-tile;
+  }
+  .add-tile {
+    @extend %dashboard-tile;
+    @include flex-align(column, center, center);
+    box-shadow: $tile-shadow;
+    border-radius: $border-radius;
+    padding: 25px;
+    color: $bg-color;
+    background: #eee;
+    text-transform: uppercase;
+    cursor: pointer;
+    .fas {
+      font-size: $font-size-xl;
+      background: $gradient;;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .label {
+      font-size: $font-size-lg;
+      font-weight: bold;
+      margin: 10px;
+    }
+    &:hover {
+      box-shadow: $tile-shadow-lg;
+    }
+
+  }
+}
+
+%dashboard-tile {
+  width: 48%;
+  min-width: 200px;
+  max-width: 400px;
+  flex-grow: 1;
+  margin: 1%;
+}

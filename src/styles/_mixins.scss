@@ -1,0 +1,27 @@
+@import 'variables';
+
+//display propert
+@mixin flex($dir: row) {
+  display: flex;
+  flex-direction: $dir;
+}
+
+@mixin flex-align($dir: row, $h: flex-start, $v: flex-start) {
+  @include flex($dir);
+  align-items: $v;
+  justify-content: $h
+}
+
+@mixin overlay($alpha: 0) {
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: $alpha;
+}
+
+@mixin box($h, $w) {
+  height: $h;
+  width: $w;
+}

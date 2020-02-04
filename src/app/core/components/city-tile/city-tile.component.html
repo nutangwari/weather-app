@@ -1,0 +1,13 @@
+<div class="tile-container">
+  <img [src]="cityInfo.coverImage" [alt]="cityInfo.cityName">
+  <ng-container *ngIf="weather">
+    <div class="weather-block" *ngIf="weather">
+      <div class="temp">{{weather.main.temp | number:'.0-0'}}&deg;</div>
+      <div class="weather">{{weather.weather[0].main}}, {{weather.wind.speed}} m/s</div>
+    </div>
+    <div class="location-block">
+      <div class="city">{{weather.name}},</div>
+      <div class="country">{{weather.sys.country}}</div>
+    </div>
+  </ng-container>
+</div>
